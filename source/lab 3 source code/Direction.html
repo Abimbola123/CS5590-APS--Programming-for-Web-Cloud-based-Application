@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1> Google Map</h1>
+</body>
+</html>
+<body>
+<div class="wrapp" ng-controller="googlemapout"
+<br class ="row">
+<input type="text" ng-model="startlocation" id="startlocation"/>
+<button id="btn" ng-click="calcRoute()">
+    Enter Location
+</button>
+<br/></br>
+<input type="button" id="getweatherData" value="Weather Forecast">
+
+</div>
+
+<div id="map"></div>
+<div class="displayweather" id="weatherModulel" style="color:green">
+
+</div>
+<div id = "map-canvas" style="height: 2px; "></div>
+<div id = "googleMap" style="width:80%;height:400px;"></div>
+
+<script>
+    function myMap() {
+        var mapProp= {
+            center:new google.maps.LatLng(35.508742,-0.120850),
+            zoom:5,
+        };
+        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBguKlJmaP7A2VDHvXxuy5gQSzT2nXsbg&callback=myMap"></script>
+
+
+</body>

@@ -1,0 +1,80 @@
+Abimbola Adeyemi Class id 12
+<html>
+<body>
+
+<div id="map" style="width:50%;height:500px"></div>
+
+<script>
+    function myMap() {
+        var mapCanvas = document.getElementById("map");
+        var mapOptions = {
+            center: new google.maps.LatLng(45.434046,12.340284),
+            zoom:5,
+            mapTypeId:google.maps.MapTypeId.HYBRID
+        };
+        var map = new google.maps.Map(mapCanvas,mapOptions);
+    }
+</script>
+<html>
+<head>
+    <title>Geolocation</title>
+    <!--Mapquest CDN-->
+    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.1.0/mapquest.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.1.0/mapquest.css"/>
+    <!--Google Map API CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWhSE1HAi753_M8rcFTfcbBXUQInf8y6c&v=3.exp&sensor=true"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBguKlJmaP7A2VDHvXxuy5gQSzT2nXsbg&libraries=places"></script>
+    <!--BootStrap CDN-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+
+
+    </style>
+    <script type="text/javascript">
+        var map;
+        var input;
+        var autocomplete;
+        window.onload = function() {
+            L.mapquest.key = 'u5OvRzMvmGzm91U4iw8q0rOqRA4GTPAy';
+            input = document.getElementById('startlocation');
+            autocomplete = new google.maps.places.Autocomplete(input);
+            map = L.mapquest.map('map', {
+                center: [0, 0],
+                layers: L.mapquest.tileLayer('map'),
+                zoom: 5
+            });
+            L.mapquest.geocoding().geocode('Kansas city, M0, United States');
+            map.addLayer(L.mapquest.trafficLayer());
+            map.addLayer(L.mapquest.incidentsLayer());
+            map.addLayer(L.mapquest.marketsLayer());
+        }
+        function updateMap()
+        {
+            var g = input.value;
+            L.mapquest.geocoding().geocode(g);
+        }
+    </script>
+</head>
+
+
+<div id="mainFrame">
+    <div id="nameTitle"></div>
+    <script>
+        document.getElementById("nameTitle").innerHTML = "Set my location" + localStorage.getItem('name');
+    </script>
+    <div class="row">
+        <input type="text"  id="startlocation" autocomplete="off" />
+        <button type="button" class="btn btn-success" onclick="updateMap()" id="btn">Show Location</button>
+        <br/></br>
+    </div>
+
+    <div id="map">
+
+    </div>
+    <p id="instructions">"Enter Location"</p>
+</div>
+</body>
