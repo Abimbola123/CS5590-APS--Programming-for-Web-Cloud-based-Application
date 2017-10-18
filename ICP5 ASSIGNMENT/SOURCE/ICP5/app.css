@@ -1,0 +1,27 @@
+menu {
+    list-style: upper-latin;
+    margin-bottom: 3em;
+    padding: 0 0 0.4em;
+}
+
+.menu > li {
+    display: inline;
+}
+
+.menu > li:before {
+    content: "|";
+    padding-right: 0.2em;
+}
+
+.menu > li:nth-child(1):before {
+    content: "";
+    padding: 0;
+}
+
+.tblSpan
+{
+    width:250px;
+    height:auto;
+    margin:30px 30px 30px 30px;
+
+}
